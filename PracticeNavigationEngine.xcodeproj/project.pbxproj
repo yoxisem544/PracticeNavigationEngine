@@ -47,6 +47,7 @@
 		63951AC7228FDF6F00EDF609 /* PracticeNavigationEngineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticeNavigationEngineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63951ACB228FDF6F00EDF609 /* PracticeNavigationEngineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeNavigationEngineUITests.swift; sourceTree = "<group>"; };
 		63951ACD228FDF6F00EDF609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63951AD9228FE06500EDF609 /* PracticeNavigationEngine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PracticeNavigationEngine.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,8 @@
 		63951AAA228FDF6F00EDF609 /* PracticeNavigationEngine */ = {
 			isa = PBXGroup;
 			children = (
+				63951ADA228FEAAE00EDF609 /* NavigationEngine */,
+				63951AD9228FE06500EDF609 /* PracticeNavigationEngine.entitlements */,
 				63951AAB228FDF6F00EDF609 /* AppDelegate.swift */,
 				63951AAD228FDF6F00EDF609 /* ViewController.swift */,
 				63951AAF228FDF6F00EDF609 /* Main.storyboard */,
@@ -123,6 +126,69 @@
 				63951ACD228FDF6F00EDF609 /* Info.plist */,
 			);
 			path = PracticeNavigationEngineUITests;
+			sourceTree = "<group>";
+		};
+		63951ADA228FEAAE00EDF609 /* NavigationEngine */ = {
+			isa = PBXGroup;
+			children = (
+				63951ADC228FED5B00EDF609 /* Core */,
+				63951ADB228FED5000EDF609 /* Tester */,
+			);
+			path = NavigationEngine;
+			sourceTree = "<group>";
+		};
+		63951ADB228FED5000EDF609 /* Tester */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tester;
+			sourceTree = "<group>";
+		};
+		63951ADC228FED5B00EDF609 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				63951ADD228FED6C00EDF609 /* Navigation */,
+				63951ADE228FED7300EDF609 /* Utilities */,
+				63951ADF228FED7D00EDF609 /* Protocol Extensions */,
+				63951AE0228FED9300EDF609 /* Parsing */,
+				63951AE1228FED9E00EDF609 /* Protocols */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		63951ADD228FED6C00EDF609 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		63951ADE228FED7300EDF609 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		63951ADF228FED7D00EDF609 /* Protocol Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Protocol Extensions";
+			sourceTree = "<group>";
+		};
+		63951AE0228FED9300EDF609 /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Parsing;
+			sourceTree = "<group>";
+		};
+		63951AE1228FED9E00EDF609 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +259,11 @@
 				TargetAttributes = {
 					63951AA7228FDF6F00EDF609 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					63951ABB228FDF6F00EDF609 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -432,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PracticeNavigationEngine/PracticeNavigationEngine.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UA35L9FR9N;
 				INFOPLIST_FILE = PracticeNavigationEngine/Info.plist;
@@ -450,6 +522,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PracticeNavigationEngine/PracticeNavigationEngine.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UA35L9FR9N;
 				INFOPLIST_FILE = PracticeNavigationEngine/Info.plist;
