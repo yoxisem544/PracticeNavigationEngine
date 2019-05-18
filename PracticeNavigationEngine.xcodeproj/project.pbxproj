@@ -14,6 +14,9 @@
 		63951AB6228FDF6F00EDF609 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63951AB4228FDF6F00EDF609 /* LaunchScreen.storyboard */; };
 		63951AC1228FDF6F00EDF609 /* PracticeNavigationEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AC0228FDF6F00EDF609 /* PracticeNavigationEngineTests.swift */; };
 		63951ACC228FDF6F00EDF609 /* PracticeNavigationEngineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951ACB228FDF6F00EDF609 /* PracticeNavigationEngineUITests.swift */; };
+		63951AE3228FF3CC00EDF609 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AE2228FF3CC00EDF609 /* Endpoint.swift */; };
+		63951AE52290026E00EDF609 /* DeepLinkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AE42290026E00EDF609 /* DeepLinkConstants.swift */; };
+		63951AE72290043500EDF609 /* DeepLinkFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AE62290043500EDF609 /* DeepLinkFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		63951ACB228FDF6F00EDF609 /* PracticeNavigationEngineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeNavigationEngineUITests.swift; sourceTree = "<group>"; };
 		63951ACD228FDF6F00EDF609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63951AD9228FE06500EDF609 /* PracticeNavigationEngine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PracticeNavigationEngine.entitlements; sourceTree = "<group>"; };
+		63951AE2228FF3CC00EDF609 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		63951AE42290026E00EDF609 /* DeepLinkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkConstants.swift; sourceTree = "<group>"; };
+		63951AE62290043500EDF609 /* DeepLinkFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,8 @@
 		63951ADE228FED7300EDF609 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				63951AE2228FF3CC00EDF609 /* Endpoint.swift */,
+				63951AE42290026E00EDF609 /* DeepLinkConstants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -180,6 +188,7 @@
 		63951AE0228FED9300EDF609 /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
+				63951AE62290043500EDF609 /* DeepLinkFactory.swift */,
 			);
 			path = Parsing;
 			sourceTree = "<group>";
@@ -328,7 +337,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				63951AAE228FDF6F00EDF609 /* ViewController.swift in Sources */,
+				63951AE52290026E00EDF609 /* DeepLinkConstants.swift in Sources */,
+				63951AE3228FF3CC00EDF609 /* Endpoint.swift in Sources */,
 				63951AAC228FDF6F00EDF609 /* AppDelegate.swift in Sources */,
+				63951AE72290043500EDF609 /* DeepLinkFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
