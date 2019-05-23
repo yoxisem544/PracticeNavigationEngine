@@ -20,14 +20,27 @@ public final class DeepLinkingFacade {
     case couldNotDeepLinkFromSpotlightItem
   }
   
+  private let flowControllerProvider: FlowControllerProvider
+  private let navigationIntentHandler: NavigationIntentHandler
   private let urlGateway: URLGateway
   private let settings: DeepLinkSettingsProtocol
+  private let userStatusProvider: UserStatusProviding
   private let navigationIntentFactory: NavigationIntentFactory
   
-  public init(urlGateway: URLGateway, settings: DeepLinkSettingsProtocol) {
-    self.urlGateway = urlGateway
+  
+  public init(flowControllerProvider: FlowControllerProvider,
+              settings: DeepLinkSettingsProtocol,
+              navigationTransitionerDataSource: NavigationTransitionerDataSource,
+              userStatusProvider: UserStatusProviding) {
+    self.flowControllerProvider = flowControllerProvider
+    self.userStatusProvider = userStatusProvider
     self.settings = settings
+    self.urlGateway = URLGateway(settings: settings)
     self.navigationIntentFactory = NavigationIntentFactory()
+    self.navigationIntentHandler = NavigationIntentHandler(
+      flowControllerProvider: flowControllerProvider, 
+      userStatusProvider: userStatusProvider, 
+      navigationTransitionerDataSource: navigationTransitionerDataSource)
   }
   
   @discardableResult
@@ -46,7 +59,18 @@ public final class DeepLinkingFacade {
   
   @discardableResult
   public func openDeepLink(_ deepLink: DeepLink) -> Promise<Bool> {
-    let intent = navigationIntentFactory.intent(for: deepLink)
+    let result = navigationIntentFactory.intent(for: deepLink)
+    switch result {
+    case .success(let intent):
+      return navigationIntentHandler.handle(intent: intent)
+    case .failure(let error):
+      let wrappedError = NSError(domain: DeepLinkingFacade.domain, 
+                                 code: ErrorCode.couldNotHandleDeepLink.rawValue,
+                                 userInfo: [NSUnderlyingErrorKey: error])
+      let pending = Promise<Bool>.pending()
+      pending.resolver.reject(wrappedError)
+      return pending.promise
+    }
   }
   
 }

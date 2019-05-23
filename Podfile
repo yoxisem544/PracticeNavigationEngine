@@ -7,6 +7,7 @@ target 'PracticeNavigationEngine' do
 
   # Pods for PracticeNavigationEngine
   pod 'PromiseKit'
+  pod 'Stateful'
 
   target 'PracticeNavigationEngineTests' do
     inherit! :search_paths

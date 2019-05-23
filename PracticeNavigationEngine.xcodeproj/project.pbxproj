@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3CACA517CCE92281A487E71B /* Pods_PracticeNavigationEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A367309724F6E662AA2631C2 /* Pods_PracticeNavigationEngine.framework */; };
+		636A704F2291071700AFB284 /* NavigationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636A704E2291071700AFB284 /* NavigationIntentHandler.swift */; };
+		636A70512291077000AFB284 /* NavigationIntentHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636A70502291077000AFB284 /* NavigationIntentHandling.swift */; };
+		636A70532291086D00AFB284 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636A70522291086D00AFB284 /* StateMachine.swift */; };
+		636A70552292F0D200AFB284 /* UserStatusProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636A70542292F0D200AFB284 /* UserStatusProviding.swift */; };
 		63951AAC228FDF6F00EDF609 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AAB228FDF6F00EDF609 /* AppDelegate.swift */; };
 		63951AAE228FDF6F00EDF609 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AAD228FDF6F00EDF609 /* ViewController.swift */; };
 		63951AB1228FDF6F00EDF609 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63951AAF228FDF6F00EDF609 /* Main.storyboard */; };
@@ -24,6 +28,8 @@
 		63951AEF229019D100EDF609 /* DeepLinkSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AEE229019D100EDF609 /* DeepLinkSettings.swift */; };
 		63951AF12290351A00EDF609 /* DeepLinkingFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AF02290351A00EDF609 /* DeepLinkingFacade.swift */; };
 		63951AF322903A5600EDF609 /* NavigationIntentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AF222903A5600EDF609 /* NavigationIntentFactory.swift */; };
+		63D393462296820B0062A35B /* FlowControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D393452296820B0062A35B /* FlowControllerProvider.swift */; };
+		63D39348229682EC0062A35B /* NavigationTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D39347229682EC0062A35B /* NavigationTransitioner.swift */; };
 		6668360CF44CF2DB550507EA /* Pods_PracticeNavigationEngineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B681DAB6720E0D2432F5DC /* Pods_PracticeNavigationEngineUITests.framework */; };
 		9DAFA288529A95AAE4B92878 /* Pods_PracticeNavigationEngineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3468597FF636C0B2DCE48BB /* Pods_PracticeNavigationEngineTests.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +55,10 @@
 		3EEC65467EB880C563B091E2 /* Pods-PracticeNavigationEngineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeNavigationEngineTests.release.xcconfig"; path = "Target Support Files/Pods-PracticeNavigationEngineTests/Pods-PracticeNavigationEngineTests.release.xcconfig"; sourceTree = "<group>"; };
 		550C32F45526A1FF95558770 /* Pods-PracticeNavigationEngineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeNavigationEngineTests.debug.xcconfig"; path = "Target Support Files/Pods-PracticeNavigationEngineTests/Pods-PracticeNavigationEngineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EBC2F480ED8D493C9B97168 /* Pods-PracticeNavigationEngine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeNavigationEngine.debug.xcconfig"; path = "Target Support Files/Pods-PracticeNavigationEngine/Pods-PracticeNavigationEngine.debug.xcconfig"; sourceTree = "<group>"; };
+		636A704E2291071700AFB284 /* NavigationIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationIntentHandler.swift; sourceTree = "<group>"; };
+		636A70502291077000AFB284 /* NavigationIntentHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationIntentHandling.swift; sourceTree = "<group>"; };
+		636A70522291086D00AFB284 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		636A70542292F0D200AFB284 /* UserStatusProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatusProviding.swift; sourceTree = "<group>"; };
 		63951AA8228FDF6F00EDF609 /* PracticeNavigationEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticeNavigationEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63951AAB228FDF6F00EDF609 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63951AAD228FDF6F00EDF609 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +82,8 @@
 		63951AEE229019D100EDF609 /* DeepLinkSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkSettings.swift; sourceTree = "<group>"; };
 		63951AF02290351A00EDF609 /* DeepLinkingFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkingFacade.swift; sourceTree = "<group>"; };
 		63951AF222903A5600EDF609 /* NavigationIntentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationIntentFactory.swift; sourceTree = "<group>"; };
+		63D393452296820B0062A35B /* FlowControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowControllerProvider.swift; sourceTree = "<group>"; };
+		63D39347229682EC0062A35B /* NavigationTransitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTransitioner.swift; sourceTree = "<group>"; };
 		6F88625815D23673BA7AFCF6 /* Pods-PracticeNavigationEngineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeNavigationEngineUITests.release.xcconfig"; path = "Target Support Files/Pods-PracticeNavigationEngineUITests/Pods-PracticeNavigationEngineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		88B681DAB6720E0D2432F5DC /* Pods_PracticeNavigationEngineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PracticeNavigationEngineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F04C8D7E6F4DC8D08513F2C /* Pods-PracticeNavigationEngine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeNavigationEngine.release.xcconfig"; path = "Target Support Files/Pods-PracticeNavigationEngine/Pods-PracticeNavigationEngine.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +232,10 @@
 			isa = PBXGroup;
 			children = (
 				63951AF222903A5600EDF609 /* NavigationIntentFactory.swift */,
+				636A704E2291071700AFB284 /* NavigationIntentHandler.swift */,
+				636A70522291086D00AFB284 /* StateMachine.swift */,
+				63D393452296820B0062A35B /* FlowControllerProvider.swift */,
+				63D39347229682EC0062A35B /* NavigationTransitioner.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -254,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				63951AEA229007AF00EDF609 /* DeepLinkSettingsProtocol.swift */,
+				636A70502291077000AFB284 /* NavigationIntentHandling.swift */,
+				636A70542292F0D200AFB284 /* UserStatusProviding.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -470,12 +488,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PracticeNavigationEngine/Pods-PracticeNavigationEngine-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Stateful/Stateful.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stateful.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -489,16 +509,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				636A70512291077000AFB284 /* NavigationIntentHandling.swift in Sources */,
 				63951AED229013CC00EDF609 /* URLGateway.swift in Sources */,
 				63951AE92290074F00EDF609 /* UniversalLinkConverter.swift in Sources */,
 				63951AEF229019D100EDF609 /* DeepLinkSettings.swift in Sources */,
 				63951AF12290351A00EDF609 /* DeepLinkingFacade.swift in Sources */,
+				636A70532291086D00AFB284 /* StateMachine.swift in Sources */,
 				63951AAE228FDF6F00EDF609 /* ViewController.swift in Sources */,
 				63951AE52290026E00EDF609 /* DeepLinkConstants.swift in Sources */,
+				636A70552292F0D200AFB284 /* UserStatusProviding.swift in Sources */,
+				63D39348229682EC0062A35B /* NavigationTransitioner.swift in Sources */,
 				63951AEB229007AF00EDF609 /* DeepLinkSettingsProtocol.swift in Sources */,
 				63951AE3228FF3CC00EDF609 /* Endpoint.swift in Sources */,
+				636A704F2291071700AFB284 /* NavigationIntentHandler.swift in Sources */,
 				63951AF322903A5600EDF609 /* NavigationIntentFactory.swift in Sources */,
 				63951AAC228FDF6F00EDF609 /* AppDelegate.swift in Sources */,
+				63D393462296820B0062A35B /* FlowControllerProvider.swift in Sources */,
 				63951AE72290043500EDF609 /* DeepLinkFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

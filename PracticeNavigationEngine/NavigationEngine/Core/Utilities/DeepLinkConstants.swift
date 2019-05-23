@@ -10,3 +10,8 @@ import Foundation
 
 public typealias DeepLink = URL
 public typealias UniversalLink = URL
+
+public enum UserStatus: CaseIterable {
+  case loggedIn
+  case loggedOut
+}
