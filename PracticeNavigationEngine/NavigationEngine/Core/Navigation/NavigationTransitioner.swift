@@ -31,43 +31,43 @@ public final class NavigationTransitioner {
     self.stateMachine = stateMachine
   }
   
-  func goToRoot(animated: Bool) -> Promise<Bool> {
+  func goToRoot(animated: Bool) -> Future {
     return performTransition(forEvent: .popEverything, autoclosure: 
       self.flowControllerProvider.rootFlowController.allGoBackToRoot(animated: animated)
     )
   }
   
-  func goToHome(animated: Bool) -> Promise<Bool> {
+  func goToHome(animated: Bool) -> Future {
     return performTransition(forEvent: .goToHome, autoclosure: 
       self.flowControllerProvider.rootFlowController.goToHomeSection()
     )
   }
   
-  func goToSettings(animated: Bool) -> Promise<Bool> {
+  func goToSettings(animated: Bool) -> Future {
     return performTransition(forEvent: .goToHome, autoclosure: 
       self.flowControllerProvider.rootFlowController.goToSettingsSection()
     )
   }
   
-  func goToNotificationInSettings(animated: Bool) -> Promise<Bool> { 
+  func goToNotificationInSettings(animated: Bool) -> Future { 
     return performTransition(forEvent: .goToNotificationsInSettings, autoclosure: 
       self.flowControllerProvider.settingsFlowController.goToNotifications(animated: animated)
     )
   }
   
-  func goToPaymentMethodInSettings(animated: Bool) -> Promise<Bool> { 
+  func goToPaymentMethodInSettings(animated: Bool) -> Future { 
     return performTransition(forEvent: .goToPaymentMethodInSettings, autoclosure: 
       self.flowControllerProvider.settingsFlowController.goToPaymentMethod(animated: animated)
     )
   }
   
-  func goToPaymentPinCodeInSettings(animated: Bool) -> Promise<Bool> { 
+  func goToPaymentPinCodeInSettings(animated: Bool) -> Future { 
     return performTransition(forEvent: .goToPaymentPinCodeInSettings, autoclosure: 
       self.flowControllerProvider.settingsFlowController.goToPaymentPinCode(animated: animated)
     )
   }
   
-  func goToPaymentContactInSettings(animated: Bool) -> Promise<Bool> { 
+  func goToPaymentContactInSettings(animated: Bool) -> Future { 
     return performTransition(forEvent: .goToPaymentContactInSettings, autoclosure: 
       self.flowControllerProvider.settingsFlowController.goToPaymentContact(animated: animated)
     )
@@ -77,7 +77,7 @@ public final class NavigationTransitioner {
 
 extension NavigationTransitioner {
   
-  fileprivate func performTransition(forEvent eventType: EventType, autoclosure: @autoclosure @escaping () -> Promise<Bool>) -> Promise<Bool> {
+  fileprivate func performTransition(forEvent eventType: EventType, autoclosure: @autoclosure @escaping () -> Future) -> Future {
     return Promise { seal in 
       stateMachine.process(
         event: eventType, 
@@ -90,7 +90,7 @@ extension NavigationTransitioner {
             .catch({ e in 
               seal.reject(e)
             })
-        },
+      },
         callback: { (result) in
           /**
            * If result == .success (i.e. the transition was performed):
@@ -107,7 +107,7 @@ extension NavigationTransitioner {
                                 userInfo: [NSLocalizedFailureReasonErrorKey: "Could not perform transition."])
             seal.reject(error)
           }
-        })
+      })
     }
   }
   

@@ -44,7 +44,7 @@ public final class DeepLinkingFacade {
   }
   
   @discardableResult
-  public func handle(url: URL) -> Promise<Bool> {
+  public func handle(url: URL) -> Future {
     return Promise { seal in 
       urlGateway.handleURL(url)
         .done({ deepLink in 
@@ -58,7 +58,7 @@ public final class DeepLinkingFacade {
   }
   
   @discardableResult
-  public func openDeepLink(_ deepLink: DeepLink) -> Promise<Bool> {
+  public func openDeepLink(_ deepLink: DeepLink) -> Future {
     let result = navigationIntentFactory.intent(for: deepLink)
     switch result {
     case .success(let intent):
@@ -67,7 +67,7 @@ public final class DeepLinkingFacade {
       let wrappedError = NSError(domain: DeepLinkingFacade.domain, 
                                  code: ErrorCode.couldNotHandleDeepLink.rawValue,
                                  userInfo: [NSUnderlyingErrorKey: error])
-      let pending = Promise<Bool>.pending()
+      let pending = Future.pending()
       pending.resolver.reject(wrappedError)
       return pending.promise
     }

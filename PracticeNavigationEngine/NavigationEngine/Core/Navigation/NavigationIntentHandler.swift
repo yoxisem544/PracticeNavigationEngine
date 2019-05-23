@@ -11,6 +11,12 @@ import PromiseKit
 
 public final class NavigationIntentHandler: NavigationIntentHandling {
   
+  static let domain = "me.rooit.navigationIntentHandler"
+  
+  enum ErrorCode: Int {
+    case unableToHanldeIntent
+  }
+  
   let flowControllerProvider: FlowControllerProvider
   let userStatusProvider: UserStatusProviding
   var navigationTransitioner: NavigationTransitioner!
@@ -35,7 +41,7 @@ public final class NavigationIntentHandler: NavigationIntentHandling {
     }
   }
   
-  func handle(intent: NavigationIntent) -> Promise<Bool> {
+  func handle(intent: NavigationIntent) -> Future {
     let stateMachine = StateMachine(initialState: .allPoppedToRoot, allowedTransitions: allowedTransitions)
     navigationTransitioner = NavigationTransitioner(flowControllerProvider: flowControllerProvider, stateMachine: stateMachine)
     navigationTransitioner.dataSource = navigationTransitionerDataSource
@@ -43,47 +49,59 @@ public final class NavigationIntentHandler: NavigationIntentHandling {
     switch intent {
     case .goToHome:
       return navigationTransitioner.goToRoot(animated: false)
-        .then({ _ -> Promise<Bool> in 
+        .then({ _ -> Future in 
           self.navigationTransitioner.goToHome(animated: false)
         })
       
     case .goToSettings:
       return navigationTransitioner.goToRoot(animated: false)
-        .then({ _ -> Promise<Bool> in 
+        .then({ _ -> Future in 
           self.navigationTransitioner.goToSettings(animated: false)
         })
       
     case .goToNotificationInSettings:
       return navigationTransitioner.goToRoot(animated: false)
-        .then({ _ -> Promise<Bool> in
+        .then({ _ -> Future in
           self.navigationTransitioner.goToNotificationInSettings(animated: true)
         })
       
     case .goToPaymentMethodInSettings:
+      let (promise, seal) = Future.pending() 
       switch userStatusProvider.userStatus {
       case .loggedIn:
-        return navigationTransitioner.goToRoot(animated: false)
-          .then({ _ -> Promise<Bool> in
+        navigationTransitioner.goToRoot(animated: false)
+          .then({ _ -> Future in
             self.navigationTransitioner.goToPaymentMethodInSettings(animated: true)
           })
+          .done({ seal.fulfill(()) })
+          .catch({ e in seal.reject(e) })
       case .loggedOut:
-        return Promise.value(false)
+        seal.reject(NSError(domain: NavigationIntentHandler.domain, 
+                            code: ErrorCode.unableToHanldeIntent.rawValue,
+                            userInfo: nil))
       }
+      return promise
       
     case .goToPaymentPinCodeInSettings:
+      let (promise, seal) = Future.pending() 
       switch userStatusProvider.userStatus {
       case .loggedIn:
-        return navigationTransitioner.goToRoot(animated: false)
-          .then({ _ -> Promise<Bool> in
+        navigationTransitioner.goToRoot(animated: false)
+          .then({ _ -> Future in
             self.navigationTransitioner.goToPaymentPinCodeInSettings(animated: true)
           })
+          .done({ seal.fulfill(()) })
+          .catch({ e in seal.reject(e) })
       case .loggedOut:
-        return Promise.value(false)
+        seal.reject(NSError(domain: NavigationIntentHandler.domain, 
+                            code: ErrorCode.unableToHanldeIntent.rawValue,
+                            userInfo: nil))
       }
+      return promise
       
     case .goToPaymentContactInSettings:
       return navigationTransitioner.goToRoot(animated: false)
-        .then({ _ -> Promise<Bool> in
+        .then({ _ -> Future in
           self.navigationTransitioner.goToPaymentContactInSettings(animated: true)
         })
     }

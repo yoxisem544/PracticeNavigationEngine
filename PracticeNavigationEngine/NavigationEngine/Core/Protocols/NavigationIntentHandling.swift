@@ -10,5 +10,5 @@ import Foundation
 import PromiseKit
 
 protocol NavigationIntentHandling {
-  func handle(intent: NavigationIntent) -> Promise<Bool>
+  func handle(intent: NavigationIntent) -> Future
 }

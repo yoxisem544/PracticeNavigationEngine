@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import PromiseKit
 
 public typealias DeepLink = URL
 public typealias UniversalLink = URL
+public typealias Future = Promise<Void>
 
 public enum UserStatus: CaseIterable {
   case loggedIn

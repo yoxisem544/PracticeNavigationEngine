@@ -34,24 +34,24 @@ public protocol RootFlowControllerProtocol {
   
   func setup()
   
-  @discardableResult func allGoBackToRoot(animated: Bool) -> Promise<Bool>
-  @discardableResult func goToHomeSection() -> Promise<Bool>
-  @discardableResult func goToSettingsSection() -> Promise<Bool>
+  @discardableResult func allGoBackToRoot(animated: Bool) -> Future
+  @discardableResult func goToHomeSection() -> Future
+  @discardableResult func goToSettingsSection() -> Future
 }
 
 public protocol HomeFlowControllerProtocol {
   var parentFlowController: RootFlowControllerProtocol? { get }
   
-  @discardableResult func goBackToRoot(animated: Bool) -> Promise<Bool>
+  @discardableResult func goBackToRoot(animated: Bool) -> Future
 }
 
 public protocol SettingsFlowControllerProtocol {
   var parentFlowController: RootFlowControllerProtocol? { get }
   
-  @discardableResult func goBackToRoot(animated: Bool) -> Promise<Bool>
-  @discardableResult func goToNotifications(animated: Bool) -> Promise<Bool>
-  @discardableResult func goToPayment(animated: Bool) -> Promise<Bool>
-  @discardableResult func goToPaymentMethod(animated: Bool) -> Promise<Bool>
-  @discardableResult func goToPaymentPinCode(animated: Bool) -> Promise<Bool>
-  @discardableResult func goToPaymentContact(animated: Bool) -> Promise<Bool>
+  @discardableResult func goBackToRoot(animated: Bool) -> Future
+  @discardableResult func goToNotifications(animated: Bool) -> Future
+  @discardableResult func goToPayment(animated: Bool) -> Future
+  @discardableResult func goToPaymentMethod(animated: Bool) -> Future
+  @discardableResult func goToPaymentPinCode(animated: Bool) -> Future
+  @discardableResult func goToPaymentContact(animated: Bool) -> Future
 }
