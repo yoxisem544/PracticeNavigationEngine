@@ -8,21 +8,17 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.8.4):
     - PromiseKit/CorePromise
-  - Stateful (2.2.0)
 
 DEPENDENCIES:
   - PromiseKit
-  - Stateful
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - PromiseKit
-    - Stateful
 
 SPEC CHECKSUMS:
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
-  Stateful: 92e01259d6e0b54af8ee4536ec50430b3d378063
 
-PODFILE CHECKSUM: db09889b8eaca9e970fcbfef9dec143cdeb924bc
+PODFILE CHECKSUM: 03bee352880aa291c3654cbed04026bd24c8e60f
 
 COCOAPODS: 1.6.0

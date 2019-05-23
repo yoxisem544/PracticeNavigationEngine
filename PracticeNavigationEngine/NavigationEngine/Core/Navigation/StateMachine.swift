@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Stateful
 
 struct TransitionOptions: OptionSet {
   let rawValue: Int
@@ -39,8 +38,7 @@ public enum StateType: Int, CaseIterable {
   case notificationsInSettings
 }
 
-public final class StateMachine: Stateful.StateMachine<StateType, EventType> {
-  typealias StateTransition = Transition<StateType, EventType>
+public final class StateMachine: StateMachineBase<StateType, EventType> {
   
   init(initialState: StateType, allowedTransitions: TransitionOptions) {
     super.init(initialState: initialState)
@@ -59,56 +57,32 @@ public final class StateMachine: Stateful.StateMachine<StateType, EventType> {
   }
   
   func addBasicTransitions() {
-    add(transition: StateTransition(with: .goToHome,
-                                    from: .allPoppedToRoot, 
-                                    to: .home))
-    add(transition: StateTransition(with: .goToSettings,
-                                    from: .allPoppedToRoot, 
-                                    to: .settings))
-    add(transition: StateTransition(with: .goToNotificationsInSettings,
-                                    from: .settings,
-                                    to: .notificationsInSettings))
-    add(transition: StateTransition(with: .goToPaymentSettings,
-                                    from: .settings,
-                                    to: .paymentInSettings))
+    add(stateTransitions: 
+      .on(event: .goToHome, stateChangeFrom: .allPoppedToRoot, to: .home),
+      .on(event: .goToSettings, stateChangeFrom: .allPoppedToRoot, to: .settings),
+      .on(event: .goToNotificationsInSettings, stateChangeFrom: .settings, to: .notificationsInSettings),
+      .on(event: .goToPaymentSettings, stateChangeFrom: .settings, to: .paymentInSettings)
+    )
     
     // move backward
-    add(transition: StateTransition(with: .popEverything,
-                                    from: .allPoppedToRoot,
-                                    to: .allPoppedToRoot))
-    add(transition: StateTransition(with: .popEverything,
-                                    from: .home,
-                                    to: .allPoppedToRoot))
-    add(transition: StateTransition(with: .popEverything,
-                                    from: .settings,
-                                    to: .allPoppedToRoot))
-    add(transition: StateTransition(with: .popEverything,
-                                    from: .notificationsInSettings,
-                                    to: .allPoppedToRoot))
-    add(transition: StateTransition(with: .popEverything,
-                                    from: .paymentInSettings,
-                                    to: .allPoppedToRoot))
-    add(transition: StateTransition(with: .popEverything,
-                                    from: .paymentMethodInSettings,
-                                    to: .allPoppedToRoot))
-    add(transition: StateTransition(with: .popEverything,
-                                    from: .paymentPinCodeInSettings,
-                                    to: .allPoppedToRoot))
-    add(transition: StateTransition(with: .popEverything,
-                                    from: .paymentContactInSettings,
-                                    to: .allPoppedToRoot))
+    add(stateTransitions: 
+      .on(event: .popEverything, stateChangeFrom: .allPoppedToRoot, to: .allPoppedToRoot),
+      .on(event: .popEverything, stateChangeFrom: .home, to: .allPoppedToRoot),
+      .on(event: .popEverything, stateChangeFrom: .settings, to: .allPoppedToRoot),
+      .on(event: .popEverything, stateChangeFrom: .notificationsInSettings, to: .allPoppedToRoot),
+      .on(event: .popEverything, stateChangeFrom: .paymentInSettings, to: .allPoppedToRoot),
+      .on(event: .popEverything, stateChangeFrom: .paymentMethodInSettings, to: .allPoppedToRoot),
+      .on(event: .popEverything, stateChangeFrom: .paymentPinCodeInSettings, to: .allPoppedToRoot),
+      .on(event: .popEverything, stateChangeFrom: .paymentContactInSettings, to: .allPoppedToRoot)
+    )
   }
   
   func addUserLoggedInTransitions() {
-    add(transition: StateTransition(with: .goToPaymentMethodInSettings,
-                                    from: .paymentInSettings,
-                                    to: .paymentMethodInSettings))
-    add(transition: StateTransition(with: .goToPaymentPinCodeInSettings,
-                                    from: .paymentInSettings,
-                                    to: .paymentPinCodeInSettings))
-    add(transition: StateTransition(with: .goToPaymentContactInSettings,
-                                    from: .paymentInSettings,
-                                    to: .paymentContactInSettings))
+    add(stateTransitions: 
+      .on(event: .goToPaymentMethodInSettings, stateChangeFrom: .paymentInSettings, to: .paymentMethodInSettings),
+      .on(event: .goToPaymentPinCodeInSettings, stateChangeFrom: .paymentInSettings, to: .paymentPinCodeInSettings),
+      .on(event: .goToPaymentContactInSettings, stateChangeFrom: .paymentInSettings, to: .paymentContactInSettings)
+    )
   }
   
   func addUserLoggedOutTransitions() {

@@ -30,6 +30,8 @@
 		63951AF322903A5600EDF609 /* NavigationIntentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951AF222903A5600EDF609 /* NavigationIntentFactory.swift */; };
 		63D393462296820B0062A35B /* FlowControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D393452296820B0062A35B /* FlowControllerProvider.swift */; };
 		63D39348229682EC0062A35B /* NavigationTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D39347229682EC0062A35B /* NavigationTransitioner.swift */; };
+		63D3934B2296DA6E0062A35B /* StateMachineBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D393492296DA6E0062A35B /* StateMachineBase.swift */; };
+		63D3934C2296DA6E0062A35B /* StateTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D3934A2296DA6E0062A35B /* StateTransition.swift */; };
 		6668360CF44CF2DB550507EA /* Pods_PracticeNavigationEngineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B681DAB6720E0D2432F5DC /* Pods_PracticeNavigationEngineUITests.framework */; };
 		9DAFA288529A95AAE4B92878 /* Pods_PracticeNavigationEngineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3468597FF636C0B2DCE48BB /* Pods_PracticeNavigationEngineTests.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +86,8 @@
 		63951AF222903A5600EDF609 /* NavigationIntentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationIntentFactory.swift; sourceTree = "<group>"; };
 		63D393452296820B0062A35B /* FlowControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowControllerProvider.swift; sourceTree = "<group>"; };
 		63D39347229682EC0062A35B /* NavigationTransitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTransitioner.swift; sourceTree = "<group>"; };
+		63D393492296DA6E0062A35B /* StateMachineBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineBase.swift; sourceTree = "<group>"; };
+		63D3934A2296DA6E0062A35B /* StateTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateTransition.swift; sourceTree = "<group>"; };
 		6F88625815D23673BA7AFCF6 /* Pods-PracticeNavigationEngineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeNavigationEngineUITests.release.xcconfig"; path = "Target Support Files/Pods-PracticeNavigationEngineUITests/Pods-PracticeNavigationEngineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		88B681DAB6720E0D2432F5DC /* Pods_PracticeNavigationEngineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PracticeNavigationEngineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F04C8D7E6F4DC8D08513F2C /* Pods-PracticeNavigationEngine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeNavigationEngine.release.xcconfig"; path = "Target Support Files/Pods-PracticeNavigationEngine/Pods-PracticeNavigationEngine.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 		63951AAA228FDF6F00EDF609 /* PracticeNavigationEngine */ = {
 			isa = PBXGroup;
 			children = (
+				63D3934D2296DA770062A35B /* State Machine */,
 				63951ADA228FEAAE00EDF609 /* NavigationEngine */,
 				63951AD9228FE06500EDF609 /* PracticeNavigationEngine.entitlements */,
 				63951AAB228FDF6F00EDF609 /* AppDelegate.swift */,
@@ -274,6 +279,15 @@
 				636A70542292F0D200AFB284 /* UserStatusProviding.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		63D3934D2296DA770062A35B /* State Machine */ = {
+			isa = PBXGroup;
+			children = (
+				63D393492296DA6E0062A35B /* StateMachineBase.swift */,
+				63D3934A2296DA6E0062A35B /* StateTransition.swift */,
+			);
+			path = "State Machine";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,14 +502,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PracticeNavigationEngine/Pods-PracticeNavigationEngine-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Stateful/Stateful.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stateful.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -522,6 +534,8 @@
 				63951AEB229007AF00EDF609 /* DeepLinkSettingsProtocol.swift in Sources */,
 				63951AE3228FF3CC00EDF609 /* Endpoint.swift in Sources */,
 				636A704F2291071700AFB284 /* NavigationIntentHandler.swift in Sources */,
+				63D3934C2296DA6E0062A35B /* StateTransition.swift in Sources */,
+				63D3934B2296DA6E0062A35B /* StateMachineBase.swift in Sources */,
 				63951AF322903A5600EDF609 /* NavigationIntentFactory.swift in Sources */,
 				63951AAC228FDF6F00EDF609 /* AppDelegate.swift in Sources */,
 				63D393462296820B0062A35B /* FlowControllerProvider.swift in Sources */,
