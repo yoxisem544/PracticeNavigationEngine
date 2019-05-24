@@ -12,10 +12,35 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
+  var rootFlowController: RootFlowController!
+  var deepLinkingFacade: DeepLinkingFacade!
+  var deepLinkingSettings: DeepLinkSettings!
+  var userStatusProvider: UserStatusProvider!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+    deepLinkingSettings = DeepLinkSettings()
+    userStatusProvider = UserStatusProvider()
+    
+    // init root flow controller
+    let rootTabBar = RootTabBarController()
+    rootFlowController = RootFlowController(with: rootTabBar)
+    rootTabBar.flowController = rootFlowController
+    
+    // init deep linking facade
+    let fowControllerProvider = FlowControllerProvider(rootFlowController: rootFlowController)
+    deepLinkingFacade = DeepLinkingFacade(flowControllerProvider: fowControllerProvider,
+                                          settings: deepLinkingSettings, 
+                                          navigationTransitionerDataSource: self,
+                                          userStatusProvider: userStatusProvider)
+    
+    // complete ui stack
+    let window = UIWindow(frame: UIScreen.main.bounds)
+    self.window = window
+    window.rootViewController = rootTabBar
+    window.makeKeyAndVisible()
+    
     return true
   }
 
@@ -44,3 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate : NavigationTransitionerDataSource {
+  
+}

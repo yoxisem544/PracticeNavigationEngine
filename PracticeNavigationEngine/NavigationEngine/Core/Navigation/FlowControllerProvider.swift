@@ -40,13 +40,13 @@ public protocol RootFlowControllerProtocol {
 }
 
 public protocol HomeFlowControllerProtocol {
-  var parentFlowController: RootFlowControllerProtocol? { get }
+  var parentFlowController: RootFlowControllerProtocol { get }
   
   @discardableResult func goBackToRoot(animated: Bool) -> Future
 }
 
 public protocol SettingsFlowControllerProtocol {
-  var parentFlowController: RootFlowControllerProtocol? { get }
+  var parentFlowController: RootFlowControllerProtocol { get }
   
   @discardableResult func goBackToRoot(animated: Bool) -> Future
   @discardableResult func goToNotifications(animated: Bool) -> Future
